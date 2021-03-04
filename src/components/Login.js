@@ -13,15 +13,14 @@ class Login extends Component {
 	};
 
 	handleSubmit = (e) => {
+		e.preventDefault();
 		const userID = this.userID.value;
 		const { dispatch } = this.props;
-
-		e.preventDefault();
 
 		if (userID !== '') {
 			dispatch(setAuthUser(userID));
 		} else {
-			this.setState({ errorMsg: 'You must choose a username' });
+			this.setState({ errorMsg: 'You must choose a user' });
 		}
 	};
 
@@ -47,15 +46,15 @@ class Login extends Component {
 										ref={(id) => (this.userID = id)}
 									>
 										<option value="">Select user</option>
-										{userNames.map((item) => (
-											<option value={item.value} key={item.value}>
-												{item.label}
+										{userNames.map((user) => (
+											<option value={user.value} key={user.value} >
+												{user.label}
 											</option>
 										))}
 									</Form.Control>
 								</Form.Group>
 
-								<Button type="submit" variant="outline-dark">
+								<Button type="submit" variant="outline-dark" >
 									Login
 								</Button>
 							</Form>

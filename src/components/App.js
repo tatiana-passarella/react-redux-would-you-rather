@@ -2,9 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
-import Container from 'react-bootstrap/Container';
 import Login from './Login';
-import Navbar from './Navbar';
+import Navigation from './Navigation';
 import Home from './Home';
 
 class App extends Component {
@@ -24,7 +23,7 @@ class App extends Component {
             />
           ) : (
             <Fragment>
-              <Navbar />
+              <Navigation />
               <Route exact path="/" component={Home} />
             </Fragment>
           )}
