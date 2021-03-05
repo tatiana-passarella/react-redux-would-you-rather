@@ -17,11 +17,8 @@ class Login extends Component {
 		const userID = this.userID.value;
 		const { dispatch } = this.props;
 
-		if (userID !== '') {
-			dispatch(setAuthUser(userID));
-		} else {
-			this.setState({ errorMsg: 'You must choose a user' });
-		}
+		userID !== '' ? dispatch(setAuthUser(userID)) :	this.setState({ errorMsg: 'You must choose a user' })
+		
 	};
 
 	render() {

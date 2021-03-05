@@ -19,11 +19,14 @@ class Navigation extends Component {
 
     return (
       <Navbar expand="lg" bg="light" variant="light" className="my-3 border">
-        <Navbar.Brand as={Link} to="/">
-          <h2>
-            <small>Would you rather?</small>
-          </h2>
-        </Navbar.Brand>
+        <Image
+          src="logo192.png"
+          roundedCircle
+          fluid
+          width="50"
+          height="50"
+          alt="logo"
+        />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -38,6 +41,9 @@ class Navigation extends Component {
             </Nav.Link>
           </Nav>
           <Nav className="align-items-start">
+            <h2>
+              <small>Would you rather?&nbsp;</small>
+            </h2>
             <Navbar.Text>{users.name}</Navbar.Text>
             <Image
               src={users[authUser].avatarURL}
