@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 import { setAuthUser } from '../actions/authUser';
 
 class Login extends Component {
@@ -33,7 +34,19 @@ class Login extends Component {
 						<Card.Body>
 							<Form onSubmit={this.handleSubmit}>
 								<Form.Group controlId="formGridState">
-									<Form.Label>Username</Form.Label>
+									<Row className="justify-content-md-center">
+										<Col xs={12} sm={4} md={4}>
+											<Image
+											src="logo192.png"
+											roundedCircle
+											fluid
+											width="192"
+											height="192"
+											alt="logo"
+											/>
+										</Col>
+									</Row>
+									<Form.Label><b>Would you rather app</b></Form.Label>
 									{errorMsg ? (
 										<p className="text-danger">{errorMsg}</p>
 									) : null}
