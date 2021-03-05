@@ -41,9 +41,6 @@ class Navigation extends Component {
             </Nav.Link>
           </Nav>
           <Nav className="align-items-start">
-            <h2>
-              <small>Would you rather?&nbsp;</small>
-            </h2>
             <Navbar.Text>{users.name}</Navbar.Text>
             <Image
               src={users[authUser].avatarURL}
