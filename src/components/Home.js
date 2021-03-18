@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import Questions from './Questions';
+import UserCard from './UserCard';
 
 class Home extends Component {
 	render() {
@@ -17,9 +17,9 @@ class Home extends Component {
                                 <small>Would You Rather?</small>
                             </h2>
                             {unansweredQuestionIds.length ? (
-                                unansweredQuestionIds.map((id) => <Questions key={id} id={id} />)
+                                unansweredQuestionIds.map((question) => <UserCard key={question.id} id={question.id} />)
                             ) : (
-                                <p className="text-center">"No more Unswered Questions! Time to create some new ones! "</p>
+                                <p className="text-center">"There's no Unswered Questions, it's your turn to create new ones!"</p>
                             )}
                         </Fragment>
 					</Tab>
@@ -29,9 +29,9 @@ class Home extends Component {
                                 <small>Would You Rather?</small>
                             </h2>
                             {answeredQuestionIds.length ? (
-                                answeredQuestionIds.map((id) => <Questions key={id} id={id} />)
+                                answeredQuestionIds.map((question) => <UserCard key={question.id} id={question.id} />)
                             ) : (
-                                <p className="text-center">"No Answered Questions yet! What are you waiting for???"</p>
+                                <p className="text-center">"There's no Answered Questions, it's your turn!"</p>
                             )}
                         </Fragment>
 					</Tab>
@@ -42,13 +42,13 @@ class Home extends Component {
 }
 
 function mapStateToProps({ authUser, questions, users }) {
-	const answeredQuestionIds = Object.keys(questions)
-		.filter((id) => users[authUser].answers.hasOwnProperty(id))
-		.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
-
-	const unansweredQuestionIds = Object.keys(questions)
-		.filter((id) => !users[authUser].answers.hasOwnProperty(id))
-		.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
+	const answeredIds = Object.keys(users[authUser].answers);
+	const answeredQuestionIds = Object.values(questions)
+	  .filter(question => answeredIds.includes(question.id))
+	  .sort((a, b) => b.timestamp - a.timestamp);
+	const unansweredQuestionIds = Object.values(questions)
+	  .filter(question => !answeredIds.includes(question.id))
+	  .sort((a, b) => b.timestamp - a.timestamp);
 
 	return {
 		answeredQuestionIds,

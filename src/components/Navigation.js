@@ -46,15 +46,15 @@ class Navigation extends Component {
               src={users[authUser].avatarURL}
               roundedCircle
               fluid
-              width="40"
-              height="40"
+              width="50"
+              height="50"
               className="authuser-avatar"
               alt="user avatar"
             />
             <Button
               variant="outline-dark"
               onClick={this.handleLogout}
-              className="mt-3 mt-lg-0"
+              className="mt-3 mt-lg-1"
             >
               Logout
             </Button>

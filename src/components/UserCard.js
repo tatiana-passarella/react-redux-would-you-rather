@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import { formatDate } from '../utils/helpers';
 
-class Questions extends Component {
+class UserCard extends Component {
 	render() {
 		const { question, author } = this.props;
 		const { optionOne, timestamp, id } = question;
@@ -23,8 +23,8 @@ class Questions extends Component {
                                 src={avatarURL}
                                 roundedCircle
                                 fluid
-                                width="40"
-                                height="40"
+                                width="80"
+                                height="80"
                                 className="mr-2"
                                 alt=""
                             />
@@ -55,4 +55,4 @@ function mapStateToProps({ questions, users }, { id }) {
 	};
 }
 
-export default connect(mapStateToProps)(Questions);
+export default connect(mapStateToProps)(UserCard);
