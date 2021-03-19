@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Login from './Login';
-import Navigation from './Navigation';
-import Home from './Home';
+import AppRouter from './AppRouter';
 
 class App extends Component {
   componentDidMount() {
@@ -17,15 +16,10 @@ class App extends Component {
       <Router>
         <div className="App">
           {authUser === null ? (
-            <Route
-              render={() => (
-                  <Login />
-              )}
-            />
+            <Login />
           ) : (
             <Container>
-              <Navigation />
-              <Route exact path="/" component={Home} />
+              <AppRouter />
             </Container>
           )}
         </div>
