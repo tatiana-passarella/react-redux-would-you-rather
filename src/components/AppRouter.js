@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Navigation from './Navigation';
 import Home from './Home';
+import PollQuestion from './PollQuestion'
 
 
 class AppRouter extends Component {
@@ -15,7 +16,7 @@ class AppRouter extends Component {
 					<main>
 						<Switch>
                             <Route exact path="/" component={Home} />
-                            
+                            <Route path="/questions/:id" component={PollQuestion} />
 						</Switch>
 					</main>
 				</Container>

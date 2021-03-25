@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Login from './Login';
 import AppRouter from './AppRouter';
+import LoadingBar from 'react-redux-loading'
 
 class App extends Component {
   componentDidMount() {
@@ -14,13 +15,14 @@ class App extends Component {
     const { authUser } = this.props;
     return (
       <Router>
+        <LoadingBar />
         <div className="App">
           {authUser === null ? (
-            <Login />
-          ) : (
             <Container>
-              <AppRouter />
+              <Login />
             </Container>
+          ) : (
+            <AppRouter />
           )}
         </div>
       </Router>
