@@ -41,20 +41,19 @@ class PollQuestion extends Component {
 			<Row className="justify-content-center">
 				<Col xs={12} md={6}>
 					<Card bg="light" className="m-3">
+					<Card.Header>
+                        <Image
+                                src={authorAvatar}
+                                roundedCircle
+                                fluid
+                                width="80"
+                                height="80"
+                                className="mr-2"
+                                alt=""
+                            />
+                            {authorName} asks:
+					</Card.Header>
                     { answered ? (
-                      <Fragment>
-						<Card.Header>
-                            <Image
-                                    src={authorAvatar}
-                                    roundedCircle
-                                    fluid
-                                    width="80"
-                                    height="80"
-                                    className="mr-2"
-                                    alt=""
-                                />
-                                {authorName} asks:
-						</Card.Header>
                         <Card.Body className="d-flex justify-content-center">
                             <ul>
                                 <li>
@@ -93,9 +92,14 @@ class PollQuestion extends Component {
                                 </Card.Text>
                             </ul>
                         </Card.Body>
-                      </Fragment>
                     ) : (
-                        <p>Not answered</p>
+                        <Card.Body className="d-flex justify-content-center">
+                            <form onSubmit={this.submitAnswer} >
+                                <ul>
+                                    <li><p>Not answered</p></li>
+                                </ul>
+                            </form>
+                        </Card.Body>
                     )}
                     </Card>
                 </Col>
