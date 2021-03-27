@@ -29,7 +29,7 @@ class PollQuestion extends Component {
 
 
     render () {
-        const { authUser, question, authorAvatar, timestamp, author, optionOne, optionTwo, answered, isOneAnswered, isTwoAnswered } = this.props
+        const { authUser, question, authorAvatar, timestamp, author, authorName, optionOne, optionTwo, answered, isOneAnswered, isTwoAnswered } = this.props
         const optionOneVotes = question.optionOne.votes.length
         const optionTwoVotes = question.optionTwo.votes.length
         const optionOnePercentage = (optionOneVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
@@ -53,7 +53,7 @@ class PollQuestion extends Component {
                                     className="mr-2"
                                     alt=""
                                 />
-                                {author} asks:
+                                {authorName} asks:
 						</Card.Header>
                         <Card.Body className="d-flex justify-content-center">
                             <ul>
@@ -109,6 +109,7 @@ function mapStateToProps ({authUser, questions, users}, props) {
     const question = questions[question_id]
     const authorAvatar = users[question.author].avatarURL
     const author = users[question.author].id
+    const authorName = users[question.author].name
     const timestamp = formatDate (question.timestamp)
     const optionOne = question.optionOne.text
     const optionTwo = question.optionTwo.text
@@ -124,6 +125,7 @@ function mapStateToProps ({authUser, questions, users}, props) {
         question,
         authorAvatar,
         author,
+        authorName,
         timestamp,
         optionOne,
         optionTwo,
