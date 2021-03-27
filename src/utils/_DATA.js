@@ -1,231 +1,189 @@
 let users = {
-  antihero: {
-    id: 'antihero',
-    name: 'Antihero',
-    avatarURL: '/img/avatars/antihero.png',
-    answers: {
-      '8xf0y6ziyjabvozdd253nd': 'optionOne',
-      '6ni6ok3ym7mf1p33lnez': 'optionTwo',
-      am8ehyc8byjqgar0jgpub9: 'optionTwo',
-      loxhs1bqm25b708cmbf3g: 'optionTwo'
-    },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
-  },
-  asterix: {
-    id: 'asterix',
-    name: 'Asterix',
-    avatarURL: '/img/avatars/asterix.png',
-    answers: {
-      vthrdm985a262al8qx3do: 'optionOne',
-      xj352vofupe1dqz9emx13r: 'optionTwo'
-    },
-    questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do']
-  },
-  daftpunk: {
-    id: 'daftpunk',
-    name: 'Daftpunk',
-    avatarURL: '/img/avatars/daftpunk.png',
-    answers: {
-      xj352vofupe1dqz9emx13r: 'optionOne',
-      vthrdm985a262al8qx3do: 'optionTwo',
-      '6ni6ok3ym7mf1p33lnez': 'optionTwo'
-    },
-    questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r']
-  },
   hannibal: {
-    id: 'hannibal',
+    id: 'Hannibal',
     name: 'Hannibal',
     avatarURL: '/img/avatars/hannibal.png',
-    answers: {},
-    questions: []
+    answers: {
+      "8xf0y6ziyjabvozdd253nd": 'optionOne',
+      "6ni6ok3ym7mf1p33lnez": 'optionOne',
+      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
+      "loxhs1bqm25b708cmbf3g": 'optionTwo'
+    },
+    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
   },
   hulk: {
     id: 'hulk',
     name: 'Hulk',
     avatarURL: '/img/avatars/hulk.png',
-    answers: {},
-    questions: []
-  },
-  joker: {
-    id: 'joker',
-    name: 'Joker',
-    avatarURL: '/img/avatars/joker.png',
-    answers: {},
-    questions: []
+    answers: {
+      "vthrdm985a262al8qx3do": 'optionOne',
+      "xj352vofupe1dqz9emx13r": 'optionTwo',
+    },
+    questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
   scream: {
     id: 'scream',
     name: 'Scream',
     avatarURL: '/img/avatars/scream.png',
-    answers: {},
-    questions: []
-  },
-  spiderman: {
-    id: 'spiderman',
-    name: 'Spiderman',
-    avatarURL: '/img/avatars/spiderman.png',
-    answers: {},
-    questions: []
-  }
-};
+    answers: {
+      "xj352vofupe1dqz9emx13r": 'optionOne',
+      "vthrdm985a262al8qx3do": 'optionTwo',
+      "6ni6ok3ym7mf1p33lnez": 'optionOne'
+    },
+    questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+  }  
+}
 
 let questions = {
-  '8xf0y6ziyjabvozdd253nd': {
+  "8xf0y6ziyjabvozdd253nd": {
     id: '8xf0y6ziyjabvozdd253nd',
-    author: 'asterix',
+    author: 'hannibal',
     timestamp: 1467166872634,
     optionOne: {
-      votes: ['asterix'],
-      text: 'Is better the summer'
+      votes: ['hannibal'],
+      text: 'have horrible short term memory',
     },
     optionTwo: {
       votes: [],
-      text: 'Is better the winter'
+      text: 'have horrible long term memory'
     }
   },
-  '6ni6ok3ym7mf1p33lnez': {
+  "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
-    author: 'daftpunk',
+    author: 'scream',
     timestamp: 1468479767190,
     optionOne: {
       votes: [],
-      text: 'Horror film'
+      text: 'become a superhero',
     },
     optionTwo: {
-      votes: ['daftpunk', 'asterix'],
-      text: 'Romantic film'
+      votes: ['scream', 'hannibal'],
+      text: 'become a supervillian'
     }
   },
-  am8ehyc8byjqgar0jgpub9: {
+  "am8ehyc8byjqgar0jgpub9": {
     id: 'am8ehyc8byjqgar0jgpub9',
-    author: 'asterix',
+    author: 'hannibal',
     timestamp: 1488579767190,
     optionOne: {
       votes: [],
-      text: 'Do the work you love'
+      text: 'be telekinetic',
     },
     optionTwo: {
-      votes: ['asterix'],
-      text: 'Do the work better payed'
+      votes: ['hannibal'],
+      text: 'be telepathic'
     }
   },
-  loxhs1bqm25b708cmbf3g: {
+  "loxhs1bqm25b708cmbf3g": {
     id: 'loxhs1bqm25b708cmbf3g',
     author: 'hulk',
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
-      text: 'MAC'
+      text: 'be a front-end developer',
     },
     optionTwo: {
-      votes: ['asterix'],
-      text: 'PC'
+      votes: ['hannibal'],
+      text: 'be a back-end developer'
     }
   },
-  vthrdm985a262al8qx3do: {
+  "vthrdm985a262al8qx3do": {
     id: 'vthrdm985a262al8qx3do',
     author: 'hulk',
     timestamp: 1489579767190,
     optionOne: {
       votes: ['hulk'],
-      text: 'Be invisible'
+      text: 'find $50 yourself',
     },
     optionTwo: {
-      votes: ['daftpunk'],
-      text: 'Read minds of others'
+      votes: ['scream'],
+      text: 'have your best friend find $500'
     }
   },
-  xj352vofupe1dqz9emx13r: {
+  "xj352vofupe1dqz9emx13r": {
     id: 'xj352vofupe1dqz9emx13r',
-    author: 'daftpunk',
+    author: 'scream',
     timestamp: 1493579767190,
     optionOne: {
-      votes: ['daftpunk'],
-      text: 'Learn Javascript'
+      votes: ['scream'],
+      text: 'write JavaScript',
     },
     optionTwo: {
       votes: ['hulk'],
-      text: 'Larn PHP'
+      text: 'write Swift'
     }
-  }
-};
-
-function generateUID() {
-  return (
-    Math.random()
-      .toString(36)
-      .substring(2, 15) +
-    Math.random()
-      .toString(36)
-      .substring(2, 15)
-  );
+  },
 }
 
-export function _getUsers() {
+function generateUID () {
+  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+}
+
+export function _getUsers () {
   return new Promise((res, rej) => {
-    setTimeout(() => res({ ...users }), 1000);
-  });
+    setTimeout(() => res({...users}), 1000)
+  })
 }
 
-export function _getQuestions() {
+export function _getQuestions () {
   return new Promise((res, rej) => {
-    setTimeout(() => res({ ...questions }), 1000);
-  });
+    setTimeout(() => res({...questions}), 1000)
+  })
 }
 
-function formatQuestion({ optionOneText, optionTwoText, author }) {
+export function formatQuestion ({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
     author,
     optionOne: {
       votes: [],
-      text: optionOneText
+      text: optionOneText,
     },
     optionTwo: {
       votes: [],
-      text: optionTwoText
+      text: optionTwoText,
     }
-  };
+  }
 }
 
-export function _saveQuestion(question) {
+export function _saveQuestion (question) {
   return new Promise((res, rej) => {
-    const authUser = question.author;
+    const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
 
     setTimeout(() => {
       questions = {
         ...questions,
         [formattedQuestion.id]: formattedQuestion
-      };
-
+      }
+      
       users = {
         ...users,
-        [authUser]: {
-          ...users[authUser],
-          questions: users[authUser].questions.concat([formattedQuestion.id])
+        [authedUser]: {
+          ...users[authedUser],
+          questions: users[authedUser].questions.concat([formattedQuestion.id])
         }
-      };
+      }
 
-      res(formattedQuestion);
-    }, 1000);
-  });
+      res(formattedQuestion)
+    }, 1000)
+  })
 }
 
-export function _saveQuestionAnswer({ authUser, qid, answer }) {
+export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
         ...users,
-        [authUser]: {
-          ...users[authUser],
+        [authedUser]: {
+          ...users[authedUser],
           answers: {
-            ...users[authUser].answers,
+            ...users[authedUser].answers,
             [qid]: answer
           }
         }
-      };
+      }
 
       questions = {
         ...questions,
@@ -233,12 +191,12 @@ export function _saveQuestionAnswer({ authUser, qid, answer }) {
           ...questions[qid],
           [answer]: {
             ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authUser])
+            votes: questions[qid][answer].votes.concat([authedUser])
           }
         }
-      };
+      }
 
-      res();
-    }, 500);
-  });
+      res()
+    }, 500)
+  })
 }
