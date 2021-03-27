@@ -2,11 +2,14 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/helpers'
 import { handleSaveAnswer } from '../actions/questions'
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import Card from 'react-bootstrap/Card'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Image from 'react-bootstrap/Image'
+import ProgressBar from 'react-bootstrap/ProgressBar'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+
 
 
 class PollQuestion extends Component {
@@ -38,10 +41,10 @@ class PollQuestion extends Component {
         console.log(this.props)
 
         return (
-			<Row className="justify-content-center">
-				<Col xs={12} md={6}>
-					<Card bg="light" className="m-3">
-					<Card.Header>
+            <Row className="justify-content-center">
+                <Col xs={12} md={6}>
+                    <Card bg="light" className="m-3">
+                    <Card.Header>
                         <Image
                                 src={authorAvatar}
                                 roundedCircle
@@ -52,7 +55,7 @@ class PollQuestion extends Component {
                                 alt=""
                             />
                             {authorName} asks:
-					</Card.Header>
+                    </Card.Header>
                     { answered ? (
                         <Card.Body className="d-flex justify-content-center">
                             <ul>
@@ -95,9 +98,29 @@ class PollQuestion extends Component {
                     ) : (
                         <Card.Body className="d-flex justify-content-center">
                             <form onSubmit={this.submitAnswer} >
-                                <ul>
-                                    <li><p>Not answered</p></li>
-                                </ul>
+                                <Form.Check
+                                    custom
+                                    type="radio"
+                                    id="optionOne"
+                                    label={optionOne}
+                                    value="optionOne"
+                                    name="answer"
+                                    className="mb-2"
+                                    onClick={this.selectRadio}
+                                />
+                                <Form.Check
+                                    custom
+                                    type="radio"
+                                    id="optionTwo"
+                                    label={optionTwo}
+                                    value="optionTwo"
+                                    name="answer"
+                                    className="mb-2"
+                                    onClick={this.selectRadio}
+                                />
+                                <Button type="submit" variant="outline-dark">
+                                    Vote
+                                </Button>
                             </form>
                         </Card.Body>
                     )}
@@ -111,8 +134,8 @@ class PollQuestion extends Component {
 function mapStateToProps ({authUser, questions, users}, props) {
     const question_id = props.match.params.id
     const question = questions[question_id]
-    const authorAvatar = users[question.author].avatarURL
     const author = users[question.author].id
+    const authorAvatar = users[question.author].avatarURL
     const authorName = users[question.author].name
     const timestamp = formatDate (question.timestamp)
     const optionOne = question.optionOne.text
