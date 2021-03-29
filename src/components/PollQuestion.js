@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatDate } from '../utils/helpers'
 import { handleSaveAnswer } from '../actions/questions'
@@ -32,7 +32,7 @@ class PollQuestion extends Component {
 
 
     render () {
-        const { authUser, question, authorAvatar, timestamp, author, authorName, optionOne, optionTwo, answered, isOneAnswered, isTwoAnswered } = this.props
+        const { authUser, question, authorAvatar, timestamp, author, authorName, optionOne, optionTwo, answered} = this.props
         const optionOneVotes = question.optionOne.votes.length
         const optionTwoVotes = question.optionTwo.votes.length
         const optionOnePercentage = (optionOneVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
