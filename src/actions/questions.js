@@ -1,9 +1,11 @@
 import { showLoading, hideLoading } from "react-redux-loading";
-import { saveQuestionAnswer } from "../utils/api";
+import { saveQuestionAnswer, saveQuestion } from "../utils/api";
+import { addAnswerToUser } from '../actions/users';
+import { addQuestionToUser } from '../actions/users';
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_ANSWER_TO_QUESTION = "ADD_ANSWER_TO_QUESTION";
-export const ADD_ANSWER_TO_USER = 'ADD_ANSWER_TO_USER';
+export const ADD_QUESTION = 'ADD_QUESTION';
 
 
 export function receiveQuestions(questions) {
@@ -13,7 +15,7 @@ export function receiveQuestions(questions) {
   };
 }
 
-export function addAnswerToQuestion(authUser, qid, answer) {
+function addAnswerToQuestion(authUser, qid, answer) {
   return {
     type: ADD_ANSWER_TO_QUESTION,
     authUser,
@@ -22,12 +24,23 @@ export function addAnswerToQuestion(authUser, qid, answer) {
   };
 }
 
-export function addAnswerToUser(authUser, qid, answer) {
-  return {
-    type: ADD_ANSWER_TO_USER,
-    authUser,
-    qid,
-    answer
+function addQuestion(question) {
+	return {
+		type: ADD_QUESTION,
+		question
+	};
+}
+
+export function handleAddQuestion(optionOneText, optionTwoText, author) {
+  return dispatch => {
+    dispatch(showLoading());
+    return saveQuestion({ optionOneText, optionTwoText, author }).then(
+      question => {
+        dispatch(addQuestion(question));
+        dispatch(addQuestionToUser(question));
+        dispatch(hideLoading());
+      }
+    );
   };
 }
 
