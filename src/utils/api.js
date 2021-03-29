@@ -14,7 +14,10 @@ import {
     );
   }
   
-  
   export function saveQuestionAnswer(info) {
     return _saveQuestionAnswer(info);
+  }
+
+  export function saveQuestion(question) {
+    return _saveQuestion(question);
   }

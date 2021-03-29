@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatDate } from '../utils/helpers'
 import { handleSaveAnswer } from '../actions/questions'
 import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
@@ -32,13 +31,13 @@ class PollQuestion extends Component {
 
 
     render () {
-        const { authUser, question, authorAvatar, timestamp, author, authorName, optionOne, optionTwo, answered} = this.props
+        const { authUser, question, authorAvatar, authorName, optionOne, optionTwo, answered} = this.props
         const optionOneVotes = question.optionOne.votes.length
         const optionTwoVotes = question.optionTwo.votes.length
         const optionOnePercentage = (optionOneVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
         const optionTwoPercentage = (optionTwoVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
         const totalVotes = optionOneVotes + optionTwoVotes;
-        console.log(this.props)
+        //console.log(this.props)
 
         return (
             <Row className="justify-content-center">
@@ -134,10 +133,8 @@ class PollQuestion extends Component {
 function mapStateToProps ({authUser, questions, users}, props) {
     const question_id = props.match.params.id
     const question = questions[question_id]
-    const author = users[question.author].id
     const authorAvatar = users[question.author].avatarURL
     const authorName = users[question.author].name
-    const timestamp = formatDate (question.timestamp)
     const optionOne = question.optionOne.text
     const optionTwo = question.optionTwo.text
     const isOneAnswered = question.optionOne.votes.includes(authUser)
@@ -151,13 +148,9 @@ function mapStateToProps ({authUser, questions, users}, props) {
         authUser,
         question,
         authorAvatar,
-        author,
         authorName,
-        timestamp,
         optionOne,
         optionTwo,
-        isOneAnswered,
-        isTwoAnswered,
         answered
     }
 }

@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Navigation from './Navigation';
 import Home from './Home';
 import PollQuestion from './PollQuestion'
+import NewQuestion from './NewQuestion';
 
 
 class AppRouter extends Component {
@@ -17,6 +18,7 @@ class AppRouter extends Component {
 						<Switch>
                             <Route exact path="/" component={Home} />
                             <Route path="/questions/:id" component={PollQuestion} />
+							<Route path="/add" component={NewQuestion} />
 						</Switch>
 					</main>
 				</Container>
