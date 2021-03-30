@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import { formatDate } from '../utils/helpers';
 
-class UserCard extends Component {
+class QuestionCard extends Component {
 	render() {
 		const { question, author } = this.props;
 		const { optionOne, timestamp, id } = question;
@@ -55,4 +55,4 @@ function mapStateToProps({ questions, users }, { id }) {
 	};
 }
 
-export default connect(mapStateToProps)(UserCard);
+export default connect(mapStateToProps)(QuestionCard);

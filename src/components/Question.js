@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleSaveAnswer } from '../actions/questions'
+import { formatDate } from '../utils/helpers'
 import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -10,8 +11,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 
-
-class PollQuestion extends Component {
+class Question extends Component {
     state = {
         selectedOption: ''
     }
@@ -31,13 +31,14 @@ class PollQuestion extends Component {
 
 
     render () {
-        const { authUser, question, authorAvatar, authorName, optionOne, optionTwo, answered} = this.props
+        const { authUser, question, authorAvatar, timestamp, authorName, optionOne, optionTwo, answered} = this.props
         const optionOneVotes = question.optionOne.votes.length
         const optionTwoVotes = question.optionTwo.votes.length
         const optionOnePercentage = (optionOneVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
         const optionTwoPercentage = (optionTwoVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
         const totalVotes = optionOneVotes + optionTwoVotes;
-        //console.log(this.props)
+        const { selectedOption } = this.state
+        console.log(this.props)
 
         return (
             <Row className="justify-content-center">
@@ -117,12 +118,19 @@ class PollQuestion extends Component {
                                     className="mb-2"
                                     onClick={this.selectRadio}
                                 />
-                                <Button type="submit" variant="outline-dark">
+                                <Button
+										type="submit"
+										variant="outline-dark"
+										disabled={selectedOption === ''}
+								>
                                     Vote
                                 </Button>
                             </form>
                         </Card.Body>
                     )}
+                    	<Card.Footer>
+							<small className="text-muted">{timestamp}</small>
+						</Card.Footer>
                     </Card>
                 </Col>
             </Row>
@@ -133,6 +141,7 @@ class PollQuestion extends Component {
 function mapStateToProps ({authUser, questions, users}, props) {
     const question_id = props.match.params.id
     const question = questions[question_id]
+    const timestamp = formatDate(question.timestamp)
     const authorAvatar = users[question.author].avatarURL
     const authorName = users[question.author].name
     const optionOne = question.optionOne.text
@@ -142,11 +151,12 @@ function mapStateToProps ({authUser, questions, users}, props) {
     const answered = isOneAnswered || isTwoAnswered
 
     return {
-        question_id,
-        users,
-        questions,
         authUser,
+        users,
+        question_id,
+        questions,
         question,
+        timestamp,
         authorAvatar,
         authorName,
         optionOne,
@@ -164,4 +174,4 @@ function mapDispatchToProps (dispatch, props) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PollQuestion)
+export default connect(mapStateToProps, mapDispatchToProps)(Question)

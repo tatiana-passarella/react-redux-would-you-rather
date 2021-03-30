@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import UserCard from './UserCard';
+import QuestionCard from './QuestionCard';
 
 class Home extends Component {
 	render() {
@@ -17,7 +17,7 @@ class Home extends Component {
                                 <small>Would You Rather?</small>
                             </h2>
                             {unansweredQuestionIds.length ? (
-                                unansweredQuestionIds.map((question) => <UserCard key={question.id} id={question.id} />)
+                                unansweredQuestionIds.map((question) => <QuestionCard key={question.id} id={question.id} />)
                             ) : (
                                 <p className="text-center">"There's no Unswered Questions, it's your turn to create new ones!"</p>
                             )}
@@ -29,7 +29,7 @@ class Home extends Component {
                                 <small>Would You Rather?</small>
                             </h2>
                             {answeredQuestionIds.length ? (
-                                answeredQuestionIds.map((question) => <UserCard key={question.id} id={question.id} />)
+                                answeredQuestionIds.map((question) => <QuestionCard key={question.id} id={question.id} />)
                             ) : (
                                 <p className="text-center">"There's no Answered Questions, it's your turn!"</p>
                             )}

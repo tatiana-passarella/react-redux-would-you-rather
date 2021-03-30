@@ -24,25 +24,25 @@ class NewQuestion extends Component {
 	};
 
 	handleSubmit = (e) => {
-		const { optionOne, optionTwo } = this.state;
-		const { dispatch } = this.props;
-
 		e.preventDefault();
-
+		const { optionOne, optionTwo } = this.state;
 		this.setState(
 			{
 				optionOne: '',
 				optionTwo: '',
 				toHome: true
 			},
-			() => dispatch(handleAddQuestion(optionOne, optionTwo))
+			() => this.props.addPoll(optionOne, optionTwo)
 		);
 	};
 
 	render() {
 		const { optionOne, optionTwo, toHome } = this.state;
+		//console.log(this.props)
 
-		if (toHome === true) return <Redirect to="/" />;
+		if (toHome === true) {
+            return <Redirect to='/' />
+        }
 
 		return (
 			<Fragment>
@@ -92,4 +92,12 @@ class NewQuestion extends Component {
 	}
 }
 
-export default connect()(NewQuestion);
+function mapDispatchToProps (dispatch) {
+    return {
+        addPoll: (optionOne, optionTwo) => {
+            dispatch(handleAddQuestion(optionOne, optionTwo))
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(NewQuestion);
