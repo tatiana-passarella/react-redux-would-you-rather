@@ -6,6 +6,7 @@ import Navigation from './Navigation';
 import Home from './Home';
 import Question from './Question'
 import NewQuestion from './NewQuestion';
+import Leaderboard from './Leaderboard'
 import PageNotFound from './PageNotFound';
 
 
@@ -20,6 +21,7 @@ class AppRouter extends Component {
                             <Route exact path="/" component={Home} />
                             <Route path="/questions/:id" component={Question} />
 							<Route path="/add" component={NewQuestion} />
+							<Route path='/leaderboard' exact component={Leaderboard} />
 							<Route component={PageNotFound} />
 						</Switch>
 					</main>
