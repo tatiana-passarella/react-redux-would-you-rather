@@ -5,3 +5,8 @@
 .authuser-avatar {
   margin-right: 10px;
 }
+
+.red-link {
+  color: #CC0000;
+  font-weight: bold;
+}

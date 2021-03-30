@@ -12,7 +12,7 @@ function PageNotFound () {
                     <p>We can't seem to find the page you're looking for</p>
                     </Row>
             <Row className="justify-content-center">
-                    <p><NavLink className='click-here' to='/'>Click here</NavLink> to go back to home page</p>
+                    <p><NavLink className='red-link' to='/'>Click here</NavLink> to go back to home page</p>
             </Row>
         </Fragment>
     )

@@ -18,14 +18,16 @@ class Navigation extends Component {
 
     return (
       <Navbar expand="lg" bg="light" variant="light" className="my-3 border">
-        <Image
-          src="logo192.png"
-          roundedCircle
-          fluid
-          width="50"
-          height="50"
-          alt="logo"
-        />
+        <NavLink as={NavLink} to='/' exact>
+          <Image
+            src="logo192.png"
+            roundedCircle
+            fluid
+            width="50"
+            height="50"
+            alt="logo link to home"
+          />
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
