@@ -17,11 +17,3 @@ export function addAnswerToUser(authUser, qid, answer) {
     answer
   };
 }
-
-export function addQuestionToUser({ id, author }) {
-  return {
-    type: ADD_QUESTION_TO_USER,
-    id,
-    author
-  };
-}

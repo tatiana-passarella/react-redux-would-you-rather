@@ -8,7 +8,7 @@ import Image from 'react-bootstrap/Image';
 class Leaderboard extends Component {
     render () {
         const { users, userIDs } = this.props
-        console.log(this.props)
+        //console.log(this.props)
 
         return (
             <Fragment>
